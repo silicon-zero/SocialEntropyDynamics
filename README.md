@@ -1,39 +1,40 @@
 # 🌌 SocialEntropyDynamics (SED)
-**An Open-Source Theoretical Framework & Algorithm for Complex Social Systems**
+**An Exploratory Framework for Modeling Social Resilience via Cross-Disciplinary Metaphors**
 
-> **"在超限战与复杂性危机交织的时代，社会的韧性不取决于刚性的控制，而取决于负熵摄入与转化的动态平衡。"**
+> **"本仓库是一个探索性的理论沙盒。我们尝试借用热力学与控制论的数学语言来描述社会系统的复杂性，但这仅是一种启发式隐喻，而非对物理定律的直接套用。"**
 
 ![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Status: v1.0](https://img.shields.io/badge/Status-v1.0_Coupled-green.svg)
+![Status: Experimental](https://img.shields.io/badge/Status-Experimental-orange.svg)
 
-## 📖 项目简介 (Abstract)
-**SocialEntropyDynamics (SED)** 是一套基于热力学、控制论、信息论跨公理推导的原创社会系统动力学模型。本项目首次建立 **「政府-社会-技术三层负熵平衡方程」**，并提供三维耦合的数值求解算法，量化解释社会稳态、系统韧性与危机演化规律。
+## 📖 项目定位 (Project Scope)
 
-SED 不将社会视为机械的牛顿系统，而是将其定义为**远离平衡态的耗散结构（Dissipative Structure）**。应对现代混合战争（超限战）的最高策略并非对等反击，而是维持系统总熵在安全区间 $[S_{min}, S_{max}]$ 内的动态稳态。
+**SocialEntropyDynamics (SED)** 是一个旨在探讨社会系统韧性的**概念性建模框架**。面对现代混合冲突与复合型内部转型压力，传统的线性分析工具常显不足。本项目尝试整合热力学、控制论与信息论的视角，构建了一个「政府-社会-技术」三层耦合的微分方程组，作为理解系统稳态与危机演化的**一种可能路径**。
 
-## 🧮 核心方程 (The Core Equation)
-社会系统的演化遵循非平衡态热力学定律，其总熵变率定义为：
+⚠️ **重要免责声明 (Critical Disclaimer)**：
+-   **非物理定律**：本模型中的“熵”是信息论意义上的隐喻映射，**绝非**严格的热力学玻尔兹曼熵。社会系统是具备主观能动性的复杂适应系统，不能简单等同于封闭的物理耗散结构。
+-   **非预测工具**：当前代码仅为定性分析的数值骨架，参数尚未经过大规模实证数据校准。**请勿将其输出结果直接用于现实世界的政策制定或战略决策。**
+-   **开放证伪**：本框架处于早期探索阶段，必然存在大量简化与缺陷。我们发布此项目的核心目的，正是为了接受跨学科学术共同体的检验、批判与修正。
+
+## 🧮 核心假设 (Core Hypothesis)
+
+作为一种启发式建模尝试，我们假设社会系统的演化动力学可被近似描述为以下三维耦合方程组：
 
 $$
-\frac{dS_{sys}}{dt} = \underbrace{\sigma_{int}(t) + \xi_{ext}(t)}_{\text{总熵产生率}} - \underbrace{\left[ \alpha \Phi_G(I, R) + \beta \Psi_C(A, K) + \gamma \mathcal{T}(D) \right]}_{\text{系统负熵摄入率}}
+\begin{aligned}
+\frac{dS_G}{dt} &= \sigma_G - \alpha_G S_G \cdot f(S) + \beta_{GC} S_C - \gamma_{TG} S_T \\
+\frac{dS_C}{dt} &= \sigma_C - \beta_C S_C \cdot f(S) + \alpha_{GC} S_G - \gamma_{TC} S_T \\
+\frac{dS_T}{dt} &= \sigma_T + \xi_{ext}(t) - \gamma_T S_T \cdot f(S) - \alpha_{GT} S_G
+\end{aligned}
 $$
 
-### 变量释义：
-- **$S_{sys}$**：社会系统总熵（无序度/失能程度）。治理目标是维持 $S_{min} \leq S_{sys} \leq S_{max}$。
-- **$\sigma_{int}$**：内生结构性摩擦（经济转型、治理迭代、社会预期重塑等带来的自然熵增）。
-- **$\xi_{ext}$**：外源不对称冲击（超限战、AI认知战、地缘脱钩等外部注入的高熵）。
-- **$\alpha \Phi_G$**：政府负熵供给（资源调配、信息处理、体制敏捷度）。
-- **$\beta \Psi_C$**：社会自组织缓冲（社会资本、认知冗余、社会激活系数）。
-- **$\gamma \mathcal{T}$**：技术制度适配（数字基建与治理规则的匹配度）。
+其中 $f(S)$ 为临界慢化因子，模拟系统在逼近阈值时恢复力的非线性衰减。完整变量释义与推导逻辑请参阅 [理论文档](docs/Theory_and_Cases.md)。
 
-## 💻 核心算法 (Core Algorithm - v1.0 三维耦合版)
-本项目提供基于 `SciPy` 的三维耦合常微分方程组数值求解器，完整实现政府($S_G$)-社会($S_C$)-技术($S_T$)三层的非线性交互动力学。
-- 👉 **[查看核心算法代码](algorithm/sed_solver_v1.py)**：包含层间压力传导、临界慢化效应、外部非对称冲击注入及多稳态相空间轨迹仿真。
+## 💻 算法实现 (Algorithm Implementation)
 
-## 📚 深度阅读 (Documentation)
-- 👉 **[理论推导与现实案例推演](docs/Theory_and_Cases.md)**：包含跨学科推导、AI认知战与复合型内部张力的共振分析。
+我们提供了一个基于 `SciPy` 的三维耦合 ODE 求解器，忠实反映了上述理论假设中的层间交互与临界相变机制：
+- 👉 **[查看 v1.0 耦合算法源码](algorithm/sed_solver_v1.py)**
 
-## 🚀 快速运行 (Quick Start)
+### 快速运行
 ```bash
 pip install numpy scipy matplotlib
 python algorithm/sed_solver_v1.py
