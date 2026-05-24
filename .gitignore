@@ -1,0 +1,24 @@
+# Python
+__pycache__/
+*.py[cod]
+*.so
+*.egg-info/
+dist/
+build/
+
+# Virtual environments
+venv/
+env/
+.venv/
+
+# IDE
+.vscode/
+.idea/
+
+# Results (keep folder but ignore generated images except .gitkeep)
+results/*.png
+!results/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db

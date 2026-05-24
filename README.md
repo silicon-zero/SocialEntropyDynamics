@@ -1,59 +1,57 @@
-# 🌌 SocialEntropyDynamics (SED)
-**An Exploratory Framework for Modeling Social Resilience via Cross-Disciplinary Metaphors**
+# SocialEntropyDynamics (SED) v2.0 - The Implicit Bank / 隐性银行
 
-> **"本仓库是一个探索性的理论沙盒。我们尝试借用热力学与控制论的数学语言来描述社会系统的复杂性，但这仅是一种启发式隐喻，而非对物理定律的直接套用。"**
+**A Cross-Disciplinary Framework for Modeling Social System Resilience via Thermodynamics, Cybernetics, and Information Theory**
 
-![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)
-![Status: Experimental](https://img.shields.io/badge/Status-Experimental-orange.svg)
+> 本仓库是一个探索性的理论沙盒。我们借用热力学与控制论的数学语言来描述社会系统的复杂性，但这仅是一种启发式隐喻，而非对物理定律的直接套用。
 
-## 📖 项目定位 (Project Scope)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![Python 3.8+](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/)
 
-**SocialEntropyDynamics (SED)** 是一个旨在探讨社会系统韧性的**概念性建模框架**。面对现代混合冲突与复合型内部转型压力，传统的线性分析工具常显不足。本项目尝试整合热力学、控制论与信息论的视角，构建了一个「政府-社会-技术」三层耦合的微分方程组，作为理解系统稳态与危机演化的**一种可能路径**。
+---
 
-⚠️ **重要免责声明 (Critical Disclaimer)**：
-- **非物理定律**：本模型中的“熵”是信息论意义上的隐喻映射，**绝非**严格的热力学玻尔兹曼熵。社会系统是具备主观能动性的复杂适应系统，不能简单等同于封闭的物理耗散结构。
-- **非预测工具**：当前代码仅为定性分析的数值骨架，参数尚未经过大规模实证数据校准。**请勿将其输出结果直接用于现实世界的政策制定或战略决策。**
-- **开放证伪**：本框架处于早期探索阶段，必然存在大量简化与缺陷。我们发布此项目的核心目的，正是为了接受跨学科学术共同体的检验、批判与修正。
+## 项目定位
 
-## 🧮 核心假设 (Core Hypothesis)
+**SocialEntropyDynamics (SED)** 是一套基于热力学、控制论、信息论跨公理推导的原创社会系统动力学模型，首次建立「政府-社会-技术三层负熵平衡方程」，并引入**双重银行体系**与**动员信息带宽**概念，量化解释社会稳态、系统韧性与危机演化规律。
 
-作为一种启发式建模尝试，我们首先从宏观层面定义社会系统的总熵变率：
+面对现代混合冲突（认知战、超限战、金融制裁）与复合型内部转型压力，传统的线性分析工具常显不足。本项目构建五维耦合微分方程组，作为理解系统稳态与危机演化的**一种可能路径**。
 
-$$
-\frac{dS_{sys}}{dt} = \underbrace{\sigma_{int}(t) + \xi_{ext}(t)}_{\text{总熵产生率}} - \underbrace{\left[ \alpha \Phi_G(I, R) + \beta \Psi_C(A, K) + \gamma \mathcal{T}(D) \right]}_{\text{系统负熵摄入率}}
-$$
+⚠️ **重要免责声明**：
+- **非物理定律**：本模型中的“熵”是信息论意义上的隐喻映射，**绝非**严格的热力学玻尔兹曼熵。
+- **非预测工具**：当前代码仅为定性分析的数值骨架，参数尚未经过大规模实证数据校准。
+- **开放证伪**：本框架处于早期探索阶段，欢迎跨学科学术共同体的检验、批判与修正。
 
-为了进一步探究内部子系统的非线性交互，我们将上述宏观概念拆解为**三个独立的耦合微分方程**，以近似描述政府、社会与技术的演化动力学：
+---
 
-$$
-\frac{dS_G}{dt} = \sigma_G - \alpha_G S_G \cdot f(S) + \beta_{GC} S_C - \gamma_{TG} S_T
-$$
+## 核心框架：五维双重银行模型
 
-$$
-\frac{dS_C}{dt} = \sigma_C - \beta_C S_C \cdot f(S) + \alpha_{GC} S_G - \gamma_{TC} S_T
-$$
+系统由五个宏观状态变量完全描述：
 
-$$
-\frac{dS_T}{dt} = \sigma_T + \xi_{ext}(t) - \gamma_T S_T \cdot f(S) - \alpha_{GT} S_G
-$$
+$$X(t) = [S_G(t), S_C(t), S_T(t), M(t), L(t)]$$
 
-### 核心符号速查：
-- $S_{sys}$：社会系统总熵（隐喻无序度或失能程度）。
-- $S_G, S_C, S_T$：分别表征政府、社会、技术子系统的状态变量（如秩序度、信任水平或信息通量）。
-- $\sigma_{int}, \sigma_i$：系统的内生演化基率或结构性摩擦。
-- $\xi_{ext}(t)$：外部随机扰动项，表征不可预见的外源不对称冲击。
-- $\alpha, \beta, \gamma$：层间耦合系数，下标 $XY$ 表示子系统 $Y$ 对 $X$ 的作用强度与方向。
-- $f(S)$：临界慢化因子，模拟系统逼近阈值时恢复力的非线性衰减。
+| 变量 | 定义 | 含义 |
+|------|------|------|
+| $S_G$ | 政府层熵 | 制度摩擦、决策滞胀、合法性损耗 |
+| $S_C$ | 社会层熵 | 信任瓦解、共识断裂、原子化程度 |
+| $S_T$ | 技术层熵 | 信息噪声、技术债务、基础设施脆弱性 |
+| $M$ | 动员资源 | 实体银行可调动的实物与权益总量 |
+| $L$ | 隐性负债 | 向不可解释维度借贷的“未来秩序”总额 |
 
-> 📖 以上仅为核心符号速查。完整的变量操作化定义、参数取值依据及推导逻辑，请参阅 [理论文档](docs/Theory_and_Cases.md)。
+### 双重银行体系
 
-## 💻 算法实现 (Algorithm Implementation)
+| | 实体银行 (Explicit) | 隐性银行 (Implicit) |
+|------|------|------|
+| **交易货币** | 动员资源 $M$ | 未来秩序 $L$ |
+| **抵押品** | 黄金、油田、国债 | 民族凝聚力、文明叙事、子孙的生存空间 |
+| **信息带宽** | 金融网络、通信协议 | 信仰强度、叙事效能、集体无意识共振 |
 
-我们提供了一个基于 `SciPy` 的三维耦合 ODE 求解器，忠实反映了上述理论假设中的层间交互与临界相变机制：
-- 👉 **[查看 v1.0 耦合算法源码](algorithm/sed_solver_v1.py)**
+**动员信息带宽** $\mathcal{B}$ 是连接两个银行的关键通道：
 
-### 快速运行
+$$\mathcal{B}(S_{sys}, M, L) = B_{\max} \cdot \max(0, 1 - \frac{S_{sys}}{S_{crit}}) \cdot \tanh(\frac{M}{M_{ref}}) \cdot \exp(-\frac{L}{L_{tol}})$$
+
+---
+
+## 快速开始
+
 ```bash
-pip install numpy scipy matplotlib
-python algorithm/sed_solver_v1.py
-
+pip install -r requirements.txt
+python algorithm/sed_solver.py
